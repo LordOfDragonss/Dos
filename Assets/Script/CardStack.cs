@@ -10,7 +10,7 @@ public class CardStack : MonoBehaviour
     private void Start()
     {
         game = GameSettings.instance;
-        CardSettings.Colors randomColor = (CardSettings.Colors)Random.Range(0, 4);
+        CardSettings.Colors randomColor = (CardSettings.Colors)Random.Range(0, 5);
         GameObject randomCard = CardSettings.instance.GetRandomCard(randomColor);
         topCard = Instantiate(randomCard, transform);
         topCard.transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f/10, transform.position.z);
@@ -23,7 +23,7 @@ public class CardStack : MonoBehaviour
         
         Card CardtopCard = topCard.GetComponent<Card>();
         Card CardActiveCard = game.activePlayer.hand.ActiveCard.GetComponent<Card>();
-        if (CardtopCard.color == CardActiveCard.color || CardtopCard.Number == CardActiveCard.Number)
+        if (CardtopCard.color == CardActiveCard.color || CardtopCard.Number == CardActiveCard.Number || CardActiveCard.color == CardSettings.Colors.any)
         {
             Destroy(topCard);
             topCard = Instantiate(game.activePlayer.hand.ActiveCard, transform);

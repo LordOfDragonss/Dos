@@ -20,7 +20,7 @@ public class AddCardToHand : MonoBehaviour
     public void AddCard(Hand Hand)
     {
         CardSettings settings = CardSettings.instance;
-        CardSettings.Colors randomColor = (CardSettings.Colors)Random.Range(0, 4);
+        CardSettings.Colors randomColor = (CardSettings.Colors)Random.Range(0, 5);
         Card = settings.GetRandomCard(randomColor);
         GameObject newCard = Instantiate(Card, Hand.transform);
         Hand.Cards.Add(newCard);

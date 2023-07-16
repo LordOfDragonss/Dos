@@ -9,7 +9,11 @@ public class CardSettings : MonoBehaviour
     {
         instance = this;
     }
-    
+    [Header("RedCards")]
+    public int WildCards = 2;
+    public GameObject Draw4;
+    public GameObject PickColor;
+
     [Header("RedCards")]
     public int redCards;
     public GameObject Red0;
@@ -22,8 +26,12 @@ public class CardSettings : MonoBehaviour
     public GameObject Red7;
     public GameObject Red8;
     public GameObject Red9;
+    public GameObject SkipRed;
+    public GameObject ReverseRed;
+    public GameObject Draw2Red;
 
     [Header("BlueCards")]
+    public int blueCards;
     public GameObject Blue0;
     public GameObject Blue1;
     public GameObject Blue2;
@@ -34,8 +42,12 @@ public class CardSettings : MonoBehaviour
     public GameObject Blue7;
     public GameObject Blue8;
     public GameObject Blue9;
+    public GameObject SkipBlue;
+    public GameObject ReverseBlue;
+    public GameObject Draw2Blue;
 
     [Header("GreenCards")]
+    public int greenCards;
     public GameObject Green0;
     public GameObject Green1;
     public GameObject Green2;
@@ -46,8 +58,12 @@ public class CardSettings : MonoBehaviour
     public GameObject Green7;
     public GameObject Green8;
     public GameObject Green9;
+    public GameObject SkipGreen;
+    public GameObject ReverseGreen;
+    public GameObject Draw2Green;
 
     [Header("YellowCards")]
+    public int yellowCards;
     public GameObject Yellow0;
     public GameObject Yellow1;
     public GameObject Yellow2;
@@ -58,6 +74,9 @@ public class CardSettings : MonoBehaviour
     public GameObject Yellow7;
     public GameObject Yellow8;
     public GameObject Yellow9;
+    public GameObject SkipYellow;
+    public GameObject ReverseYellow;
+    public GameObject Draw2Yellow;
 
     [Header("CurrentCards")]
     public GameObject ActiveCard;
@@ -67,20 +86,39 @@ public class CardSettings : MonoBehaviour
         red,
         green,
         blue,
-        yellow
+        yellow,
+        any
     }
 
     public GameObject GetRandomCard(Colors color)
     {
-        int randomNr = Random.Range(0, redCards);
+        int randomNr = 0;
         if (color == Colors.red)
+        {
+            randomNr = Random.Range(0, redCards);
             ActiveCard = GetRedCardOnNumber(randomNr);
+        }
         if (color == Colors.green)
+        {
+            randomNr = Random.Range(0, greenCards);
             ActiveCard = GetGreenCardOnNumber(randomNr);
+        }
         if (color == Colors.blue)
+        {
+            randomNr = Random.Range(0, blueCards);
             ActiveCard = GetBlueCardOnNumber(randomNr);
+        }
+
         if (color == Colors.yellow)
+        {
+            randomNr = Random.Range(0, yellowCards);
             ActiveCard = GetYellowCardOnNumber(randomNr);
+        }
+        if (color == Colors.any)
+        {
+            randomNr = Random.Range(0, WildCards);
+            ActiveCard = GetWildCard(randomNr);
+        }
         return ActiveCard;
     }
 
@@ -108,6 +146,12 @@ public class CardSettings : MonoBehaviour
                 return Red8;
             case 9:
                 return Red9;
+            case 10:
+                return SkipRed;
+            case 11:
+                return ReverseRed;
+            case 12:
+                return Draw2Red;
             default:
                 return null;
         }
@@ -137,6 +181,12 @@ public class CardSettings : MonoBehaviour
                 return Blue8;
             case 9:
                 return Blue9;
+            case 10:
+                return SkipBlue;
+            case 11:
+                return ReverseBlue;
+            case 12:
+                return Draw2Blue;
             default:
                 return null;
         }
@@ -166,6 +216,12 @@ public class CardSettings : MonoBehaviour
                 return Green8;
             case 9:
                 return Green9;
+            case 10:
+                return SkipGreen;
+            case 11:
+                return ReverseGreen;
+            case 12:
+                return Draw2Green;
             default:
                 return null;
         }
@@ -195,6 +251,25 @@ public class CardSettings : MonoBehaviour
                 return Yellow8;
             case 9:
                 return Yellow9;
+            case 10:
+                return SkipYellow;
+            case 11:
+                return ReverseYellow;
+            case 12:
+                return Draw2Yellow;
+            default:
+                return null;
+        }
+    }
+
+    public GameObject GetWildCard(int nr)
+    {
+        switch (nr)
+        {
+            case 0:
+                return PickColor;
+            case 1:
+                return Draw4;
             default:
                 return null;
         }
