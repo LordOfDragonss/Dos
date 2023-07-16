@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: 3
   Number: 12
+  isWild: 1
 --- !u!1 &4211315438285402237
 GameObject:
   m_ObjectHideFlags: 0

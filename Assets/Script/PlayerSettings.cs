@@ -7,6 +7,7 @@ public class PlayerSettings : MonoBehaviour
     public int PlayerNr;
     public Hand hand;
     public bool hasUno;
+    public bool isSelectingColor;
 
     [SerializeField] GameObject unoText;
     // Start is called before the first frame update

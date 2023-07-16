@@ -223,3 +223,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: 2
   Number: 10
+  isWild: 1

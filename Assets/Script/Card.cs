@@ -6,4 +6,5 @@ public class Card : MonoBehaviour
 {
     public CardSettings.Colors color;
     public int Number;
+    public bool isWild;
 }

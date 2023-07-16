@@ -5,17 +5,35 @@ using UnityEngine;
 public class GameOptions : MonoBehaviour
 {
     public static GameOptions instance;
+    public TurnOrder order;
+    public enum TurnOrder
+    {
+        Default,
+        Reverse
+    };
     public void Awake()
     {
         instance = this;
     }
     public void EndTurn()
     {
-        if (GameSettings.instance.activePlayerNr < GameSettings.instance.AmountOfPlayers)
-            GameSettings.instance.activePlayerNr++;
-        else
+        if (order == TurnOrder.Default)
         {
-            GameSettings.instance.activePlayerNr = 1;
+            if (GameSettings.instance.activePlayerNr < GameSettings.instance.AmountOfPlayers)
+                GameSettings.instance.activePlayerNr++;
+            else
+            {
+                GameSettings.instance.activePlayerNr = 1;
+            }
+        }
+        else if (order == TurnOrder.Reverse)
+        {
+            if (GameSettings.instance.activePlayerNr > 1 && GameSettings.instance.activePlayerNr <= GameSettings.instance.AmountOfPlayers)
+                GameSettings.instance.activePlayerNr--;
+            else if(GameSettings.instance.activePlayerNr <= 1)
+            {
+                GameSettings.instance.activePlayerNr = 4;
+            }
         }
     }
 }

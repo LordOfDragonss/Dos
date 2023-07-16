@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: 4
   Number: 0
+  isWild: 1
 --- !u!1001 &1075087986348550675
 PrefabInstance:
   m_ObjectHideFlags: 0
