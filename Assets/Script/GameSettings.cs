@@ -10,6 +10,7 @@ public class GameSettings : MonoBehaviour
     public PlayerSettings activePlayer;
     public int activePlayerNr;
     public CardStack cardStack;
+    [SerializeField] GameObject EndScreen;
     // Start is called before the first frame update
     void Awake()
     {
@@ -23,5 +24,33 @@ public class GameSettings : MonoBehaviour
     void Update()
     {
         activePlayer = Players.Find(x=>x.PlayerNr == activePlayerNr);
+
+        CheckUno();
+        foreach(var player in Players)
+        {
+            if(player.hand.CardsInHand == 0)
+            {
+                GameEnd();
+            }
+        }
+
+    }
+
+    public void CheckUno()
+    {
+        foreach (var player in Players)
+        {
+            if(player.hand.CardsInHand == 1)
+            {
+                player.hasUno = true;
+
+            }
+        }
+    }
+
+
+    public void GameEnd()
+    {
+        EndScreen.SetActive(true);
     }
 }

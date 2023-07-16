@@ -33,6 +33,7 @@ public class CardStack : MonoBehaviour
             game.activePlayer.hand.Cards.Remove(game.activePlayer.hand.ActiveCard);
             Destroy(game.activePlayer.hand.ActiveCard);
             game.activePlayer.hand.AdjustSpacing();
+            game.activePlayer.hand.CardsInHand--;
             GameOptions.instance.EndTurn();
         }
         else
