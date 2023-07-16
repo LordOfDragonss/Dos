@@ -11,7 +11,7 @@ public class ColorPicker : MonoBehaviour
     [SerializeField] GameObject yellowCard;
     private void Update()
     {
-        if (GameSettings.instance.activePlayer.isSelectingColor)
+        if (GameSettings.instance.activePlayer.isSelectingColor && GameSettings.instance.activePlayer != null)
         {
             canvas.enabled = true;
         }

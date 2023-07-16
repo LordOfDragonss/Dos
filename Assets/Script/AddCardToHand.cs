@@ -15,6 +15,7 @@ public class AddCardToHand : MonoBehaviour
     private void OnMouseDown()
     {
         AddCard(GameSettings.instance.activePlayer.hand);
+        GameOptions.instance.EndTurn();
     }
 
     public void AddCard(Hand Hand)
@@ -26,6 +27,5 @@ public class AddCardToHand : MonoBehaviour
         Hand.Cards.Add(newCard);
         Hand.AdjustSpacing();
         Hand.CardsInHand++;
-        GameOptions.instance.EndTurn();
     }
 }

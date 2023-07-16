@@ -45,6 +45,10 @@ public class GameSettings : MonoBehaviour
                 player.hasUno = true;
 
             }
+            else if(player.hand.CardsInHand > 1 && player.hasUno)
+            {
+                player.hasUno = false;
+            }
         }
     }
 

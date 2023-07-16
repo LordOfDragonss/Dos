@@ -9,7 +9,6 @@ public class WildCardActions
         PlayerSettings victim = GetVictim();
         AddCardToHand.instance.AddCard(victim.hand);
         AddCardToHand.instance.AddCard(victim.hand);
-        GameOptions.instance.EndTurn();
     }
     public void Draw4()
     {
@@ -26,7 +25,7 @@ public class WildCardActions
         PlayerSettings victim = null;
         if (GameOptions.instance.order == GameOptions.TurnOrder.Default)
         {
-            if (GameSettings.instance.activePlayerNr > 1 && GameSettings.instance.activePlayerNr < 4)
+            if (GameSettings.instance.activePlayerNr >= 1 && GameSettings.instance.activePlayerNr < GameSettings.instance.AmountOfPlayers)
             {
                 victim = GameSettings.instance.Players.Find(x => x.PlayerNr == GameSettings.instance.activePlayerNr + 1);
             }
@@ -38,7 +37,7 @@ public class WildCardActions
         }
         else if (GameOptions.instance.order == GameOptions.TurnOrder.Reverse)
         {
-            if (GameSettings.instance.activePlayerNr > 1 && GameSettings.instance.activePlayerNr < 4)
+            if (GameSettings.instance.activePlayerNr > 1 && GameSettings.instance.activePlayerNr <= GameSettings.instance.AmountOfPlayers)
             {
                 victim = GameSettings.instance.Players.Find(x => x.PlayerNr == GameSettings.instance.activePlayerNr - 1);
             }

@@ -17,7 +17,7 @@ public class CardStack : MonoBehaviour
     private void Start()
     {
         game = GameSettings.instance;
-        CardSettings.Colors randomColor = (CardSettings.Colors)Random.Range(0, 5);
+        CardSettings.Colors randomColor = (CardSettings.Colors)Random.Range(0, 4);
         GameObject randomCard = CardSettings.instance.GetRandomCard(randomColor);
         topCard = Instantiate(randomCard, transform);
         topCard.transform.position = new Vector3(transform.position.x, transform.position.y + 0.1f / 10, transform.position.z);
